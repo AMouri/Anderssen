@@ -1,0 +1,31 @@
+Anderssen is a chess engine currently under development. It is intended to be run on 64-bit processors and will be compatible with most GUIs supporting UCI. Grandmaster-level strength (~2500) is desired.
+
+Current design decisions (subject to change):
+
+Primary language: C
+Board representation: Bitboard
+Move generation will be done through calculation.
+    --Will move to lookup tables for faster access once search/evaluation is partially done.
+        --Magic bitboards
+            --python script for generating magic numbers (practical ones & optimal ones)
+    Psuedolegal (check legality after generation)
+Game tree search done w/ Negamax & alpha-beta pruning
+    --Restrictive search (change depth depending on position strength)
+        --Weaker moves analyized less than stronger moves
+    --Quiescent search to avoid horizon effect
+    --Add a mate search?
+    --Could look into Crafty/Houdini/Fritz for ideas
+        Eg. Houdini implements Principal Variation Search (PVS)
+        Might be worth it to look into current research
+Evaluation: use linear combination
+    Look into theory!
+        --Eg. Silman's The Amateur Mind has list of imbalances that could be adapted
+Is playing style important?
+    --Question of creating strongest possible engine or weaker unique engine w/ certain style
+
+GUI:
+    possibly will develop as separate project for testing purposes
+    Cross-engine compatibility
+---------------------------------------------------------------------
+
+Thanks to the Chess Programming Wiki (chessprogramming.wikispaces.com) for providing lots of resources.
